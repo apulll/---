@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>callback</title>
+</head>
+<body>
+	<div id="icon"></div>
+<script src="../../J_Library/jquery/dist/jquery.min.js"></script>
+<script>
+(function($){
+	$.fn.regionSelect = function(options){
+		var defaults = {
+			url:null,
+			color:'red',
+			size:'12px',
+			init:null
+		}
+		var opts = $.extend(true, defaults, options);
+		var valude = "bbbb";
+
+		  var getvalude = function(){
+		  	return valude
+		  }
+		  opts.init(getvalude())
+		  // 引用回调函数
+		  // if (typeof opts.init == 'function') { // 确保类型为函数类型
+		  //       opts.init.apply(this,arguments); // 执行回调函数
+		  // };
+
+
+	};
+	$('#icon').regionSelect({
+	    color  : 'yellow',
+	    init : function (params) {
+	        console.log(params)
+	    }
+	})
+})(jQuery)
+
+</script>
+</body>
+</html>
