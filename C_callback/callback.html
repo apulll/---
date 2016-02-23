@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>callback 表格可编辑</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-editable.css">
+</head>
+<body>
+可编辑的表格
+<div>
+<table>
+	<tr>
+		<td><a href="#" class="editable editable-click" style="display: inline;">可编辑表格</a></td>
+	</tr>
+</table>
+</div>
+<!-- edit 框 -->
+<script type="text/html" id="editInput">
+    <span class="editable-container editable-inline" style="display:none;">
+    <div>
+        <div class="editableform-loading" style="display: none;"></div>
+        <form class="form-inline editableform" style="">
+                <div class="control-group form-group"><div>
+                <div class="editable-input" style="position: relative;">
+                    <input type="text" class="form-control input-sm editinput" placeholder="" style="padding-right: 24px;">
+                    <span class="editable-clear-x" style="display: none;"></span>
+                </div>
+                <div class="editable-buttons">
+                    <button type="submit" class="btn btn-primary btn-md editable-submit"><i class="glyphicon glyphicon-ok"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-md editable-cancel"><i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </div>
+                <div class="editable-error-block help-block" style="display: none;"></div>
+        </form>
+    </div>
+    </span>
+</script>
+
+<script src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="template-native.js"></script>
+<script type="text/javascript" src="callback.js"></script>
+<script type="text/javascript">
+	$('.editable-click').editable({
+    value:null,
+    url:null,
+    dataBack:function(a,b){
+      console.log(a,b)
+	    }
+	});
+</script>
+</body>
+</html>

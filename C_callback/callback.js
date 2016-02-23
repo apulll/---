@@ -1,10 +1,10 @@
+
 ;(function($){
     var Editable = function(element, options){
         this.$element = $(element);
         this.$parent =this.$element.closest('td');
         this.$editable = this.$parent.find('.editable-container');
         this.options = $.extend({},$.fn.editable.defaults, options);
-        this.options.dataBack = function()
         if(!this.options.selector) {
             this.init();
         }
@@ -46,7 +46,7 @@
                 event.preventDefault();
                 _self.options.data.diff = _self.getValue();
 
-                _self.ajaxSub();
+                // _self.ajaxSub();  因为是要对接后台url所以这一步注释掉了
             });
         },
         getData: function(){
@@ -97,6 +97,9 @@
             this.setEditValue(this.getValue());
             this.hideEditCon();
             // this.hideEditCon();
+            if($.isFunction(this.options.dataBack)) {
+                this.options.dataBack.apply(this,arguments);
+            }
         },
         //提交失败
         error: function() {
